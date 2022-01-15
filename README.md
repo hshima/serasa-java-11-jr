@@ -3,12 +3,12 @@ Implementação de API CRUD RESTful para cadastro de pessoa com score
 
 ## Requisitos básicos
 
-- linguagem Java (preferência Java 11);
-- maven no build do projeto;
-- Pode criar archetype usando o start.spring.io (adicione as dependências que achar relevantes);
-- Usar framework Spring (incluindo Spring Boot, para iniciar o serviço);
-- Montar um banco de dados em memória (pode usar o H2 ou HSQLDB), usando Hibernate na persistência de dados;
-- Necessário pelo menos um teste unitário para cada método da camada Service, usando JUnit e Mockito; 
+* linguagem Java (preferência Java 11);
+* maven no build do projeto;
+* Pode criar archetype usando o start.spring.io (adicione as dependências que achar relevantes);
+* Usar framework Spring (incluindo Spring Boot, para iniciar o serviço);
+* Montar um banco de dados em memória (pode usar o H2 ou HSQLDB), usando Hibernate na persistência de dados;
+* Necessário pelo menos um teste unitário para cada método da camada Service, usando JUnit e Mockito; 
 
 ## Requisitos para endpoints
 
@@ -59,38 +59,32 @@ Get:
 
 ## Lógica do Service
 
-- Montar lógica na camada Service, para retornar o atributo scoreDescricao, correspondente ao score encontrado entre scoreInicial e scoreFinal;
-- Usar a seguinte tabela para montagem da lógica de score:
+* Montar lógica na camada Service, para retornar o atributo scoreDescricao, correspondente ao score encontrado entre scoreInicial e scoreFinal;
+* Usar a seguinte tabela para montagem da lógica de score:
 
-|scoreDescricao|scoreInicial|scoreFinal|
-|---|---|---|
-|Insuficiente|0|200|
-|Inaceitável|201|500|
-|Aceitável|501|700|
+    |scoreDescricao|scoreInicial|scoreFinal|
+    |---|---|---|
+    |Insuficiente|0|200|
+    |Inaceitável|201|500|
+    |Aceitável|501|700|
 |Recomendável|701|1000| 
 
 ## Estrutura do Banco de dados
 
 ```yaml
 Pessoa:
-    id:
-      type: numérico
-      
-    nome:
-      type: texto
-      
-    telefone:
-      type: texto 
-      
-    idade:
-      type: numérico
-      
-    cidade:
-      type: texto 
-      
-    estado:
-      type: texto
-      
-    score:
-  type: numérico 
+  id:
+    type: numérico
+  nome:
+    type: texto
+  telefone:
+    type: texto
+  idade:
+    type: numérico
+  cidade:
+    type: texto
+  estado:
+    type: texto
+  score:
+    type: numérico 
 ```
