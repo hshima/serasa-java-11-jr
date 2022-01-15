@@ -20,4 +20,4 @@ spring:
 #    hibernate:
 #      ddl-auto: update
 #      naming:
-#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#        physical-strategy: org.hibernate.boot.br.com.shimada_henrique.serasajava11jr.model.naming.PhysicalNamingStrategyStandardImpl

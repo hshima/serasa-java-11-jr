@@ -1,1 +1,1 @@
-INSERT INTO PESSOAS(nome, telefone, idade, cidade, estado, score) VALUES ('Henrique', '123456789', 31, 'São Paulo', 'SP', 900);
+INSERT INTO PESSOAS(nome, telefone, idade, cidade, estado, score) VALUES ('Henrique', '123456789', 31, 'São Paulo', 'SP', 900), ('Henrique', '123456789', 31, 'São Paulo', 'SP', 150), ('Henrique', '123456789', 31, 'São Paulo', 'SP', 250),('Henrique', '123456789', 31, 'São Paulo', 'SP', 600);

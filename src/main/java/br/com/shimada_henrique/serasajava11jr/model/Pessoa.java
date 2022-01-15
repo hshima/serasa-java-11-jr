@@ -1,4 +1,4 @@
-package br.com.shimada_henrique.serasajava11jr.repositories;
+package br.com.shimada_henrique.serasajava11jr.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;
