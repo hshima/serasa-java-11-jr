@@ -60,6 +60,7 @@ Get:
 ## Lógica do Service
 
 * Montar lógica na camada Service, para retornar o atributo scoreDescricao, correspondente ao score encontrado entre scoreInicial e scoreFinal;
+
 * Usar a seguinte tabela para montagem da lógica de score:
 
     |scoreDescricao|scoreInicial|scoreFinal|
@@ -67,7 +68,7 @@ Get:
     |Insuficiente|0|200|
     |Inaceitável|201|500|
     |Aceitável|501|700|
-|Recomendável|701|1000| 
+    |Recomendável|701|1000| 
 
 ## Estrutura do Banco de dados
 

@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS PESSOA;
+CREATE TABLE PESSOAS (
+    id   BIGINT       NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(128),
+    telefone VARCHAR(128),
+    idade INTEGER,
+    cidade VARCHAR(128),
+    estado VARCHAR(128),
+    score INTEGER,
+    PRIMARY KEY (id)
+);
