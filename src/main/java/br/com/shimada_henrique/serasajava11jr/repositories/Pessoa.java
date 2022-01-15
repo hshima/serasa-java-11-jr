@@ -1,4 +1,4 @@
-package model;
+package br.com.shimada_henrique.serasajava11jr.repositories;
 
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -8,12 +8,13 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-//@Table(name = "PESSOAS")
+@Table(name = "PESSOAS")
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
