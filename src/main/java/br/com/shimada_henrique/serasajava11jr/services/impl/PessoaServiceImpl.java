@@ -6,7 +6,9 @@ import br.com.shimada_henrique.serasajava11jr.model.repositories.PessoaRepositor
 import br.com.shimada_henrique.serasajava11jr.services.PessoaService;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,17 +42,19 @@ public class PessoaServiceImpl implements PessoaService {
 
     @Override
     public Pessoa upsert(Pessoa pessoa){
-        return repository.findByNomeAndTelefone(pessoa.getNome(), pessoa.getTelefone())
+        // Camada de transformação para garantir que não ocorra SQL Injection
+        var validObject = PessoaDto.convert(pessoa);
+        return repository.findByNomeAndTelefone(validObject.getNome(), validObject.getTelefone())
                 .map(value -> repository.save(
                         Pessoa.builder()
                                 .id(value.getId())
                                 .nome(value.getNome())
                                 .telefone(value.getTelefone())
-                                .score(pessoa.getScore())
-                                .cidade(pessoa.getCidade())
-                                .estado(pessoa.getEstado())
-                                .idade(pessoa.getIdade())
+                                .score(validObject.getScore())
+                                .cidade(validObject.getCidade())
+                                .estado(validObject.getEstado())
+                                .idade(validObject.getIdade())
                                 .build())
-                ).orElseGet(() -> repository.save(pessoa));
+                ).orElseGet(() -> repository.save(validObject));
     }
 }
