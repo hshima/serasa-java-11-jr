@@ -1,5 +1,6 @@
 package br.com.shimada_henrique.serasajava11jr.services;
 
+import br.com.shimada_henrique.serasajava11jr.model.Pessoa;
 import br.com.shimada_henrique.serasajava11jr.model.dto.PessoaDto;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface PessoaService {
     public Optional<List<PessoaDto>> getAllPessoa();
 
     public Optional<PessoaDto> findById(Long id);
+
+    public Pessoa upsert(Pessoa pessoa);
 }

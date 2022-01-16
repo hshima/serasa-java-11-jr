@@ -35,6 +35,10 @@ public class PessoaDto {
                 }else {
                     if (item.getScore() <= 1000) {
                         this.scoreDescricao = StringUtils.capitalize(RECOMENDAVEL.toString());
+                    } else {
+                        if (item.getScore() > 1000){
+                            this.scoreDescricao = StringUtils.capitalize(ERRO_AO_ANALISAR.toString());
+                        }
                     }
                 }
             }

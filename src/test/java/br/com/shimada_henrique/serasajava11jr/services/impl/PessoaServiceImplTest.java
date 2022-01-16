@@ -81,5 +81,19 @@ class PessoaServiceImplTest {
         assertTrue(service.findById(1L).isEmpty());
     }
 
+    @Test
+    void whenRequestPostForNewPessoa_thenInsertsInDataBase(){
+        when(repository.findByNomeAndTelefone("Henrique", "123456879")).thenReturn(Optional.empty());
+        when(repository.save(getPessoa())).thenReturn(getPessoa());
+        assertEquals(service.upsert(getPessoa()), getPessoa());
+    }
+
+    @Test
+    void whenRequestPostForExistingPessoa_thenUpdatesInDataBase(){
+        when(repository.findByNomeAndTelefone("Henrique", "123456879")).thenReturn(Optional.of(getPessoa()));
+        when(repository.save(getPessoa())).thenReturn(getPessoa());
+        assertEquals(service.upsert(getPessoa()), getPessoa());
+    }
+
 }
 
