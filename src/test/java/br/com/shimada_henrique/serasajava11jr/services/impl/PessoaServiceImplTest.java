@@ -3,7 +3,7 @@ package br.com.shimada_henrique.serasajava11jr.services.impl;
 import br.com.shimada_henrique.serasajava11jr.model.Pessoa;
 import br.com.shimada_henrique.serasajava11jr.model.dto.PessoaDto;
 import br.com.shimada_henrique.serasajava11jr.model.repositories.PessoaRepository;
-import br.com.shimada_henrique.serasajava11jr.services.PessoaService;
+import br.com.shimada_henrique.serasajava11jr.services.IPessoaService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 class PessoaServiceImplTest {
 
-    PessoaService service;
+    IPessoaService service;
     @Mock PessoaRepository repository;
 
     private Pessoa getPessoa() {

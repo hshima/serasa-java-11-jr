@@ -3,7 +3,7 @@ package br.com.shimada_henrique.serasajava11jr.controllers;
 
 import br.com.shimada_henrique.serasajava11jr.model.Pessoa;
 import br.com.shimada_henrique.serasajava11jr.model.dto.PessoaDto;
-import br.com.shimada_henrique.serasajava11jr.services.PessoaService;
+import br.com.shimada_henrique.serasajava11jr.services.IPessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -19,7 +19,7 @@ import java.util.List;
 public class PessoaController {
 
     @Autowired
-    private PessoaService service;
+    private IPessoaService service;
 
     @GetMapping
     public ResponseEntity<List<PessoaDto>> getAllPessoa(){
@@ -37,7 +37,9 @@ public class PessoaController {
 
     @PostMapping
     public ResponseEntity<Pessoa> createPessoa(@RequestBody @Valid Pessoa pessoa) {
-        var doc = service.upsert(pessoa);
+        // Camada de transformação para garantir que não ocorra SQL Injection
+        var validObject = PessoaDto.convert(pessoa);
+        var doc = service.upsert(validObject);
         if(doc != null) {
             return ResponseEntity.created(URI.create("/pessoas/" + doc.getId())).build();
         }else {
