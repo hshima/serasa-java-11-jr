@@ -26,28 +26,31 @@ public class Pessoa implements Serializable {
     private Long id;
 
     @Column(name = "nome")
-    @NotBlank
+    @NotBlank(message = "[Nome] Erro: O campo Nome não deve estar em branco")
     // Validação básica de padrão para nomes. Basicamente, não permite caracteres especiais como \[ ou \*. Ideogramas são aceitos.
     @Pattern(regexp = "^[\\p{L}'][ \\p{L}'-]*[\\p{L}]$", message = "[Nome] Erro: Inseridos caracteres não aceitos para nomes")
     private String nome;
 
     @Column(name = "telefone")
-    @Pattern(regexp = "^[0-9]{2}\\s([0-9]|.{0})[0-9]{4}-[0-9]{4}$", message = "[Telefone] Erro: O telefone precisa respeitar o formato '01 23456-7890' ou '01 2345-6789'")
+    @Pattern(regexp = "^[0-9]{2}\\s([0-9]|.{0})[0-9]{4}-[0-9]{4}$", message = "[Telefone] Erro: O telefone deve seguir o padrão: '01 23456-7890' ou '01 2345-6789'")
     private String telefone;
 
     @Column(name = "idade")
+    @Positive(message = "[Idade] Erro: O valor para Idade deve ser maior que Zero.")
+    @NotNull(message = "[Idade] Erro: O valor para Idade não deve ser Nulo.")
     private Integer idade;
 
     @Column(name = "cidade")
+    @NotBlank(message = "[Cidade] Erro: O campo Cidade não deve estar em branco")
     private String cidade;
 
     @Column(name = "estado")
-    @Size(min = 2, max = 2, message = "[Estado] Erro: Aceitos apenas 2 Dígitos para estado")
+    @Size(min = 2, max = 2, message = "[Estado] Erro: O campo Estado deve conter 2 Dígitos.")
     private String estado;
 
     @Column(name = "score")
-    @Min(value = 0, message = "[Score] Erro: Valor enviado é menor que Zero.")
-    @Max(value = 1000, message = "[Score] Erro: Valor enviado é maior que Mil.")
+    @Min(value = 0, message = "[Score] Erro: O Score deve ser maior que Zero.")
+    @Max(value = 1000, message = "[Score] Erro: O Score deve ser menor que Mil.")
     private Integer score;
 
     @Override

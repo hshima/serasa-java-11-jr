@@ -89,3 +89,36 @@ Pessoa:
   score:
     type: numérico 
 ```
+
+## Evidências de validação
+
+### 2 Testes realizados em cada método, passando com sucesso:
+
+![Testes de unidade](./imgs/2022-01-16_18-27-13.png)
+
+### Validações em localhost
+
+#### Requisição para id 1 
+
+![Requisição para id 1](./imgs/2022-01-16_18-30-48.png)
+
+### Requisição sem id
+
+#### Retornando todos os objetos do banco
+
+![Requisição sem id](./imgs/2022-01-16_18-32-10.png)
+
+#### Retornando HTTP status 204
+![Requisição sem id, quando o banco está vazio ](./imgs/2022-01-16_18-34-28.png)
+
+### Post de cadastro de documento
+
+##### Caso normal
+
+![Caso normal](./imgs/2022-01-16_18-37-26.png)
+
+#### Caso com ideograma
+![Caso ideogramas](./imgs/2022-01-16_18-40-14.png)
+
+#### Caso de formato inválido de dados
+![Caso com validação](./imgs/2022-01-16_18-52-46.png)
