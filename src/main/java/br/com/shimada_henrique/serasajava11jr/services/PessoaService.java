@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface PessoaService {
 
     public Optional<List<PessoaDto>> getAllPessoa();
+
+    public Optional<PessoaDto> findById(Long id);
 }

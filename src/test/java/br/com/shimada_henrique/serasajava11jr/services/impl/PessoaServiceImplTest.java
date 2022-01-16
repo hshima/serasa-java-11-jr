@@ -10,7 +10,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -56,9 +58,27 @@ class PessoaServiceImplTest {
     @Test
     void whenRequestsGetAllPessoa_thenReturnListOfPessoa() {
         when(repository.findAll()).thenReturn(List.of(getPessoa()));
-        var listOfOptional = service.getAllPessoa();
-        assertTrue(listOfOptional.isPresent());
-        assertEquals(listOfOptional.get(), List.of(getDto()));
+        service.getAllPessoa()
+                .ifPresent(pessoaDtos -> assertEquals(pessoaDtos, List.of(getDto())));
+    }
+
+    @Test
+    void whenRequestsGetAllPessoaAndListIsEmpty_thenReturnNull() {
+        when(repository.findAll()).thenReturn(new ArrayList<>());
+        assertTrue(service.getAllPessoa().isEmpty());
+    }
+
+    @Test
+    void whenRequestGetById_thenReturnsSingleDocument(){
+        when(repository.findById(1L)).thenReturn(Optional.of(getPessoa()));
+        service.findById(1L)
+                .ifPresent(pessoaDto -> assertEquals(pessoaDto, getDto()));
+    }
+
+    @Test
+    void whenRequestGetByIdForNonExistingDocumen_thenReturnsEmptyOptional(){
+        when(repository.findById(1L)).thenReturn(Optional.empty());
+        assertTrue(service.findById(1L).isEmpty());
     }
 
 }
