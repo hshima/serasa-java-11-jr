@@ -122,3 +122,12 @@ Pessoa:
 
 #### Caso de formato inválido de dados
 ![Caso com validação](./imgs/2022-01-16_18-52-46.png)
+
+## Compilação de imagem docker
+
+```sh
+mvn clean install && \
+docker build .
+# Capturar a imagem gerada e rodar proximo comando
+docker run -p 8080:8080 <image>
+```
