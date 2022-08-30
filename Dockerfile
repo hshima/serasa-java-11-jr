@@ -1,19 +1,26 @@
-FROM maven:3.6.0-jdk-11-slim AS build
+FROM maven:3.8.5-jdk-11-slim AS build
 
-WORKDIR /
+WORKDIR /home
 
-COPY src /home/app/src
+COPY .mvn/ .mvn
 
-COPY pom.xml /home/app
+COPY mvnw pom.xml ./
 
-RUN mvn -f /home/app/pom.xml clean package
+RUN ./mvnw dependency:resolve
 
-RUN ls /home/app
+#RUN mvn -f /home/pom.xml clean package
+
+CMD ["./mvnw", "spring-boot:run"]
 
 FROM amazoncorretto:11.0.15
 
-COPY --from=build /home/app/target/serasa-java-11-jr-0.0.1-SNAPSHOT.jar /usr/local/lib/app.jar
+WORKDIR /home
+
+COPY . /home
 
 EXPOSE 80 8080
 
-ENTRYPOINT ["java","-jar","/app.jar"]
+CMD cd target
+
+#ENTRYPOINT ["java","-jar","serasa-java-11-jr-0.0.1-SNAPSHOT.jar"]
+CMD ["./mvnw", "spring-boot:run"]
