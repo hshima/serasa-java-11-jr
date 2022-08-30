@@ -10,8 +10,8 @@ RUN mvn -f /home/app/pom.xml clean package
 
 FROM amazoncorretto:11.0.15
 
-COPY --from=build /home/app/target/serasa-java-11-jr-0.0.1-SNAPSHOT.war /usr/local/lib/app.war
+COPY --from=build /home/app/target/serasa-java-11-jr-0.0.1-SNAPSHOT.jar /usr/local/lib/app.jar
 
 EXPOSE 80 8080
 
-ENTRYPOINT ["java","-jar","/app.war"]
+ENTRYPOINT ["java","-jar","/app.jar"]
